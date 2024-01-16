@@ -1,0 +1,5 @@
+﻿<!DOCTYPE libro [
+<!ELEMENT libro (autor, titulo)>
+<!ELEMENT autor (#PCDATA)>
+<!ELEMENT titulo (#PCDATA)>
+]>

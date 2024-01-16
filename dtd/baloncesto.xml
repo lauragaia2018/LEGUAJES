@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE equipos_de_baloncesto [
+<!ELEMENT equipos_de_baloncesto (equipo*, jugador*)>
+<!ELEMENT equipo (nombre, ciudad, entrenador, jugadores)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT ciudad (#PCDATA)>
+<!ELEMENT entrenador (#PCDATA)>
+<!ELEMENT jugadores (#PCDATA)>
+<!ELEMENT jugador (nombre, nacionalidad)>
+<!ATTLIST jugador 
+posicion (base|escolta|alero|pivot) #REQUIRED>
+<!ELEMENT nacionalidad (#PCDATA)>
+]>
+
+<equipos_de_baloncesto>
+    <equipo>
+        <nombre>gaia</nombre>
+        <ciudad>vigo</ciudad>
+        <entrenador>laura</entrenador>
+        <jugadores>5</jugadores>
+    </equipo>
+    <jugador posicion="base">
+        <nombre>gina</nombre>
+        <nacionalidad>peru</nacionalidad>
+    </jugador>
+</equipos_de_baloncesto>

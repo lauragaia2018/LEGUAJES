@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE paneles [
+<!ELEMENT paneles  (evento*)>
+<!ELEMENT evento (via, pk, retencion, sentido, carrilescortados+)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT via (nombre, ref, origen, destino, (doble|sentido), carriles )>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT ref (#PCDATA)>
+<!ELEMENT origen (#PCDATA)>
+<!ELEMENT destino (#PCDATA)>
+<!ELEMENT doble EMPTY>
+<!ELEMENT sentido (#PCDATA)>
+<!ELEMENT carriles (#PCDATA)>
+<!ELEMENT pk (#PCDATA)>
+<!ELEMENT retencion EMPTY>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT carrilescortados (#PCDATA)>
+<!ATTLIST carrilescortados
+valor (1|2|3|4) #REQUIRED>
+]>
+
+<paneles>
+    <evento tipo="recta">
+        <via>
+            <nombre>avenida</nombre>
+            <ref>a la izquierda</ref>
+            <origen>de la tierra</origen>
+            <destino>todos a roma</destino>
+            <doble></doble>
+            <carriles>cuatro</carriles>
+        </via>
+        <pk>ni idea</pk>
+        <retencion long="hola"></retencion>
+        <sentido>ninguno</sentido>
+        <carrilescortados valor="1">todos</carrilescortados>
+    </evento>
+    
+    
+    
+    
+    
+</paneles>
+
+
