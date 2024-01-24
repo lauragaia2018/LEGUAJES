@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           targetNamespace="http://www.example.com/cine"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">
+
+ 
+  <xs:simpleType name="urlType">
+    <xs:restriction base="xs:anyURI">
+      <xs:pattern value="https?://.*"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="edadType">
+    <xs:restriction base="xs:nonNegativeInteger">
+      <xs:maxInclusive value="99"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:simpleType name="generoType">
+    <xs:restriction base="xs:string">
+    
+    </xs:restriction>
+  </xs:simpleType>
+
+
+  <xs:complexType name="repartoType">
+    <xs:choice minOccurs="1" maxOccurs="unbounded">
+      <xs:element name="actor" type="xs:string"/>
+      <xs:element name="actriz" type="xs:string"/>
+    </xs:choice>
+  </xs:complexType>
+
+  
+  <xs:complexType name="clasificacionType">
+    <xs:sequence>
+      <xs:element name="edad" type="edadType" minOccurs="1"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  
+  <xs:complexType name="directorType">
+    <xs:choice>
+      <xs:element name="director" type="xs:string"/>
+      <xs:element name="directora" type="xs:string"/>
+    </xs:choice>
+  </xs:complexType>
+
+
+  <xs:element name="pelicula" type="peliculaType"/>
+
+  <xs:complexType name="peliculaType">
+    <xs:sequence>
+      <xs:element name="titulo" type="xs:string"/>
+      <xs:element name="titulo-original" type="xs:string" minOccurs="0"/>
+      <xs:element name="pais" type="xs:string"/>
+      <xs:element name="generos" minOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="genero" type="generoType" minOccurs="1" maxOccurs="unbounded"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:choice>
+        <xs:element name="clasificacion" type="clasificacionType"/>
+        <xs:element name="sin-clasificar" type="xs:string"/>
+      </xs:choice>
+      <xs:element name="sinopsis" type="xs:string"/>
+      <xs:element name="director" type="directorType"/>
+      <xs:element name="reparto" type="repartoType"/>
+      <xs:element name="web" type="urlType"/>
+      <xs:element name="imdb" type="urlType"/>
+      <xs:element name="cartel" type="xs:string"/>
+    </xs:sequence>
+    <xs:attribute name="codigo" type="xs:string" use="required"/>
+    <xs:attribute name="duracion" type="xs:nonNegativeInteger" use="required"/>
+    <xs:attribute name="ano" type="xs:nonNegativeInteger" use="required"/>
+  </xs:complexType>
+
+ 
+  <xs:element name="cartelera">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="pelicula" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+
